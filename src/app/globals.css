@@ -1,0 +1,139 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ── Golvia design tokens (copied verbatim from golvia-frontend) ───────────── */
+@theme {
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --color-primary-15: #ebf2ff;
+  --color-primary-25: #f3f6fc;
+  --color-primary-50: #eaf1fd;
+  --color-primary-60: #f3f7ff;
+  --color-primary-70: #7b8fa6;
+  --color-primary-80: #1e1e1e;
+  --color-primary-100: #d6e3f9;
+  --color-primary-200: #aecaf3;
+  --color-primary-300: #88afee;
+  --color-primary-400: #538ae6;
+  --color-primary-500: #3373e0; /* brand blue */
+  --color-primary-600: #1d69d8; /* hover */
+  --color-text-400: #92929b;
+  --color-text-800: #3e444c;
+  --color-text-900: #2b2e31;
+  --color-text-950: #25272b;
+  --color-dirty-blue-500: #262537;
+  --color-dirty-blue-200: #92929b;
+  --color-line-100: #e8effd;
+  --color-line-200: #e6e6e6;
+  --color-custom-green: #48c563;
+  --color-custom-yellow: #ffcc00;
+  --color-custom-purple: #6a65fd;
+}
+
+:root {
+  --background: #ffffff;
+  --grouped: #f1f5f9;
+  --grouped-card: #ffffff;
+  --card: #f8fafc;
+  --fill: #f1f5f9;
+  --fill-strong: #e2e8f0;
+  --foreground: #0f172a;
+  --foreground-soft: #334155;
+  --secondary: #475569;
+  --muted: #64748b;
+  --subtle: #94a3b8;
+  --navy: #0b1a45;
+  --divider: #f1f5f9;
+  --border: #e2e8f0;
+  --border-strong: #cbd5e1;
+
+  /* Status palette */
+  --status-operational: #48c563;
+  --status-degraded: #ffcc00;
+  --status-partial: #f97316;
+  --status-major: #ef4444;
+  --status-maintenance: #6a65fd;
+  --status-nodata: var(--fill-strong);
+
+  /* Link text: primary-600 keeps AA contrast on white; primary-400 on dark */
+  --link: var(--color-primary-600);
+  --link-hover: var(--color-primary-500);
+}
+
+.dark {
+  --background: #000000;
+  --grouped: #000000;
+  --grouped-card: #1c1c1e;
+  --card: #1c1c1e;
+  --fill: #262626;
+  --fill-strong: #39393d;
+  --foreground: #ffffff;
+  --foreground-soft: #e5e5e5;
+  --secondary: #d4d4d4;
+  --muted: #a3a3a3;
+  --subtle: #737373;
+  --navy: #ffffff;
+  --divider: #262626;
+  --border: #38383a;
+  --border-strong: #404040;
+
+  --link: var(--color-primary-400);
+  --link-hover: var(--color-primary-300);
+}
+
+/* Semantic utilities: bg-grouped, bg-grouped-card, text-muted, border-border … */
+@theme inline {
+  --color-background: var(--background);
+  --color-grouped: var(--grouped);
+  --color-grouped-card: var(--grouped-card);
+  --color-card: var(--card);
+  --color-fill: var(--fill);
+  --color-fill-strong: var(--fill-strong);
+  --color-foreground: var(--foreground);
+  --color-foreground-soft: var(--foreground-soft);
+  --color-secondary: var(--secondary);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-navy: var(--navy);
+  --color-divider: var(--divider);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-link: var(--link);
+  --color-link-hover: var(--link-hover);
+  --color-status-operational: var(--status-operational);
+  --color-status-degraded: var(--status-degraded);
+  --color-status-partial: var(--status-partial);
+  --color-status-major: var(--status-major);
+  --color-status-maintenance: var(--status-maintenance);
+  --color-status-nodata: var(--status-nodata);
+}
+
+html {
+  color-scheme: light;
+}
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--grouped);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
