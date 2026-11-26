@@ -2,11 +2,12 @@
 
 import { useStatusSummary, useUptime, type UptimePayload } from "../hooks/use-status";
 import type { StatusSummary } from "../types";
-import { SectionHeading } from "./card";
+import { HeaderBand, SectionHeading } from "./card";
 import { ComponentGroups } from "./component-groups";
 import { ActiveIncidentCard, MaintenanceCard } from "./incident-cards";
 import { BackendUnavailable, ErrorState, OfflineBadge } from "./notices";
 import { OverallBanner } from "./overall-banner";
+import { StatusLegend } from "./status-legend";
 
 interface Props {
   initialSummary: StatusSummary;
@@ -22,13 +23,16 @@ export function StatusDashboard({ initialSummary, initialUptime, names }: Props)
 
   return (
     <>
+      {/* First on the page so it joins the navy header, whatever the status. */}
+      <HeaderBand>
+        <OverallBanner summary={data} refreshing={summary.isFetching} />
+      </HeaderBand>
+
       <div className="space-y-2 empty:hidden">
         <OfflineBadge />
         {summary.isError && <ErrorState onRetry={() => summary.refetch()} />}
         {!data.incidentsAvailable && <BackendUnavailable />}
       </div>
-
-      <OverallBanner summary={data} refreshing={summary.isFetching} />
 
       {data.activeIncidents.length > 0 && (
         <section aria-labelledby="active-heading">
@@ -53,7 +57,9 @@ export function StatusDashboard({ initialSummary, initialUptime, names }: Props)
       )}
 
       <section aria-labelledby="components-heading">
-        <SectionHeading id="components-heading">Components</SectionHeading>
+        <SectionHeading id="components-heading" action={<StatusLegend />}>
+          Components
+        </SectionHeading>
         <ComponentGroups groups={data.groups} uptime={uptime.data?.uptime} incidents={uptime.data?.incidents ?? {}} />
       </section>
     </>

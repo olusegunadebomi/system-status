@@ -1,6 +1,6 @@
 import { CalendarClock } from "lucide-react";
 import Link from "next/link";
-import { SEVERITY_META, STATUS_META } from "../lib/status-meta";
+import { SEVERITY_META } from "../lib/status-meta";
 import type { Incident, Maintenance } from "../types";
 import { Card } from "./card";
 import { IncidentTimeline } from "./incident-timeline";
@@ -21,7 +21,6 @@ export function ActiveIncidentCard({ incident, names }: { incident: Incident; na
   const sev = SEVERITY_META[incident.severity];
   return (
     <Card as="article" className="overflow-hidden">
-      <div className="h-1" style={{ background: STATUS_META[sev.status].color }} />
       <div className="space-y-3 p-4 sm:p-5">
         <div className="flex flex-wrap items-start justify-between gap-2">
           <h3 className="text-base font-semibold text-foreground">
@@ -41,8 +40,7 @@ export function ActiveIncidentCard({ incident, names }: { incident: Incident; na
 export function MaintenanceCard({ maintenance, names }: { maintenance: Maintenance; names: Record<string, string> }) {
   const inProgress = maintenance.status === "in_progress";
   return (
-    <Card as="article" className="overflow-hidden border-status-maintenance/40">
-      <div className="h-1 bg-status-maintenance" />
+    <Card as="article" className="overflow-hidden">
       <div className="space-y-2 p-4 sm:p-5">
         <div className="flex flex-wrap items-start justify-between gap-2">
           <h3 className="text-base font-semibold text-foreground">{maintenance.title}</h3>

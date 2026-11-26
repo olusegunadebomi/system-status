@@ -56,6 +56,20 @@ function useStatusChangeEffects(overall: StatusSummary["overall"]) {
   }, [overall]);
 }
 
+/**
+ * Time of the latest status check, for the footer. Shares the summary cache, so
+ * on the home page it follows the dashboard's polling; elsewhere it fetches once.
+ */
+export function useLastChecked(): string | undefined {
+  const { data } = useQuery({
+    queryKey: statusKeys.summary,
+    queryFn: async () => (await http.get<StatusSummary>("/api/status")).data,
+    staleTime: 15_000,
+    refetchOnWindowFocus: false,
+  });
+  return data?.updatedAt;
+}
+
 export function useUptime(initialData?: UptimePayload) {
   return useQuery({
     queryKey: statusKeys.uptime,

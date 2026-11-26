@@ -16,7 +16,7 @@ export function ThemeToggle() {
       onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label={hydrated ? label : "Toggle theme"}
       title={hydrated ? label : undefined}
-      className="flex size-10 items-center justify-center rounded-full border border-border bg-grouped-card text-secondary transition-colors hover:bg-fill hover:text-foreground"
+      className="flex size-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-header-fg transition-colors hover:bg-white/15"
     >
       {/* Render both and let CSS pick, so the icon is right before hydration too. */}
       <Sun aria-hidden className="hidden size-[18px] dark:block" />

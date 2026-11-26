@@ -41,18 +41,25 @@
   --secondary: #475569;
   --muted: #64748b;
   --subtle: #94a3b8;
-  --navy: #0b1a45;
+  --navy: #0f1b46;
   --divider: #f1f5f9;
   --border: #e2e8f0;
   --border-strong: #cbd5e1;
 
-  /* Status palette */
-  --status-operational: #48c563;
-  --status-degraded: #ffcc00;
-  --status-partial: #f97316;
-  --status-major: #ef4444;
+  /* Brand header (navy in both themes) */
+  --header-bg: var(--navy);
+  --header-fg: #ffffff;
+  --header-accent: #a9c1f2;
+
+  /* Status palette: deeper tones that read well on white */
+  --status-operational: #3d9b5f;
+  --status-degraded: #d4a12a;
+  --status-partial: #e07a35;
+  --status-major: #d9434f;
   --status-maintenance: #6a65fd;
-  --status-nodata: var(--fill-strong);
+  --status-nodata: #cbd5e1;
+  /* How much of the status colour goes into pill text (rest is --foreground, for contrast) */
+  --status-text-strength: 60%;
 
   /* Link text: primary-600 keeps AA contrast on white; primary-400 on dark */
   --link: var(--color-primary-600);
@@ -71,10 +78,19 @@
   --secondary: #d4d4d4;
   --muted: #a3a3a3;
   --subtle: #737373;
-  --navy: #ffffff;
+  --navy: #0f1b46;
   --divider: #262626;
   --border: #38383a;
   --border-strong: #404040;
+
+  /* Status palette: brighter tones that read well on near-black */
+  --status-operational: #5cc66f;
+  --status-degraded: #f0c94a;
+  --status-partial: #f5a05a;
+  --status-major: #f2687a;
+  --status-maintenance: #8f8bff;
+  --status-nodata: #3a3a3c;
+  --status-text-strength: 100%;
 
   --link: var(--color-primary-400);
   --link-hover: var(--color-primary-300);
@@ -94,6 +110,9 @@
   --color-muted: var(--muted);
   --color-subtle: var(--subtle);
   --color-navy: var(--navy);
+  --color-header: var(--header-bg);
+  --color-header-fg: var(--header-fg);
+  --color-header-accent: var(--header-accent);
   --color-divider: var(--divider);
   --color-border: var(--border);
   --color-border-strong: var(--border-strong);

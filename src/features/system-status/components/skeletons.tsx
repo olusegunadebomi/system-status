@@ -1,15 +1,17 @@
-import { Card, Skeleton } from "./card";
+import { Card, HeaderBand, Skeleton } from "./card";
 
 export function DashboardSkeleton() {
   return (
     <div className="space-y-8" aria-busy="true" aria-label="Loading status">
-      <Card className="flex items-center gap-4 p-5 sm:p-6">
-        <Skeleton className="size-12 rounded-full sm:size-14" />
-        <div className="flex-1 space-y-2">
-          <Skeleton className="h-6 w-2/3" />
-          <Skeleton className="h-4 w-1/3" />
-        </div>
-      </Card>
+      <HeaderBand>
+        <Card className="flex items-center gap-4 p-5 sm:p-6">
+          <Skeleton className="size-12 rounded-full sm:size-14" />
+          <div className="flex-1 space-y-2">
+            <Skeleton className="h-6 w-2/3" />
+            <Skeleton className="h-4 w-1/3" />
+          </div>
+        </Card>
+      </HeaderBand>
       <div>
         <Skeleton className="mb-3 h-4 w-28" />
         <Card className="divide-y divide-border">

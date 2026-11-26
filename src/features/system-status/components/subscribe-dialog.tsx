@@ -47,11 +47,11 @@ export function SubscribeButton() {
       <button
         type="button"
         onClick={() => dialogRef.current?.showModal()}
-        className="inline-flex h-10 items-center gap-2 rounded-full bg-primary-500 px-4 text-sm font-semibold text-white transition-colors hover:bg-primary-600"
+        className="inline-flex h-10 items-center gap-2 rounded-full bg-white px-4 text-sm font-semibold text-navy transition-colors hover:bg-primary-100"
       >
         <Bell aria-hidden className="size-4" />
-        <span className="max-[400px]:sr-only">Subscribe</span>
-        <span className="sr-only"> to updates</span>
+        <span className="max-[400px]:sr-only">Get updates</span>
+        <span className="sr-only"> by email</span>
       </button>
 
       <dialog

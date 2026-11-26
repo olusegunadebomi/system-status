@@ -38,15 +38,16 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f1f5f9" },
-    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+    // Matches the navy header so the mobile browser bar blends in.
+    { media: "(prefers-color-scheme: light)", color: "#0f1b46" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f1b46" },
   ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={outfit.variable} suppressHydrationWarning>
-      <body className="flex min-h-dvh flex-col bg-grouped font-sans text-foreground">
+      <body className="flex min-h-dvh flex-col overflow-x-clip bg-grouped font-sans text-foreground">
         <a
           href="#main"
           className="sr-only z-50 rounded-lg bg-primary-500 px-4 py-2 text-white focus:not-sr-only focus:fixed focus:top-3 focus:left-3"

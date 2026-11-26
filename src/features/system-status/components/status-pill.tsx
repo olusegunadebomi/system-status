@@ -7,8 +7,12 @@ export function StatusPill({ status, compact = false }: { status: ComponentStatu
   const Icon = meta.icon;
   return (
     <span
-      className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-border bg-card px-2 py-0.5 text-xs font-medium text-foreground-soft"
-      style={{ borderColor: `color-mix(in srgb, ${meta.color} 45%, var(--border))` }}
+      className="inline-flex shrink-0 items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold"
+      style={{
+        // Tinted fill + status-coloured text (mixed toward --foreground in light mode for AA contrast).
+        background: `color-mix(in srgb, ${meta.color} 14%, var(--grouped-card))`,
+        color: `color-mix(in srgb, ${meta.color} var(--status-text-strength), var(--foreground))`,
+      }}
     >
       <Icon aria-hidden className="size-3.5" style={{ color: meta.color }} strokeWidth={2.5} />
       {compact ? (
